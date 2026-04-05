@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio</title>
+        <link rel="stylesheet" href="../../output.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </head>
+    <body class="bg-gray-100">
+        <nav class="bg-gray-900 shadow-md border-b-2 text-white h-15">
+            <div class="flex flex-row">
+                <div
+                    class="container -mt-8 mx-auto flex items-center px-5 justify-between">
+                    <a href="../../index.html">
+                        <img src="../../../public/assets/logo.png" alt="Logo"
+                            class="h-32 inline-block">
+                    </a>
+                    <div class="flex gap-4">
+                        <a href="../../index.html"
+                            class="text-lg font-semibold hover:text-gray-300 mx-4">
+                            <i class="fas fa-house mr-1"></i> Acceuil
+                        </a>
+                        <a href="./projects.html"
+                            class="text-lg font-semibold hover:text-gray-300 mx-4">
+                            <i class="fas fa-briefcase mr-1"></i> Projets
+                        </a>
+                    </div>
+                    <div>
+                        <a href="../contact.html"
+                            class="text-lg font-semibold hover:text-gray-300 mx-4">
+                            <i class="fas fa-envelope mr-1"></i> Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section id="projects" class="bg-gray-50 py-20">
+            <div class="container mx-auto px-6">
+
+                <div
+                    class="flex flex-col md:flex-row justify-between items-center mb-12 gap-4">
+
+                    <div class="text-center md:text-left">
+                        <h2 class="text-4xl font-bold text-gray-900">
+                            Mes Projets
+                        </h2>
+                        <div
+                            class="w-20 h-1 bg-blue-600 mt-3 rounded mx-auto md:mx-0"></div>
+                        <p class="text-gray-600 mt-4">
+                            Quelques réalisations illustrant mes compétences en
+                            développement,
+                            cloud et DevOps.
+                        </p>
+                    </div>
+
+                    <a href="./addProject.html"
+                        class="flex items-center gap-2 bg-blue-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-700 transition shadow">
+                        <i class="fas fa-plus"></i>
+                        Ajouter un projet
+                    </a>
+
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+
+                    <div
+                        class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="../../../public/assets/appEtudiant.png"
+                            class="w-full h-52 object-cover">
+                        <div class="p-6">
+                            <h3
+                                class="text-xl font-semibold text-gray-800 mb-2">
+                                Application de gestion des étudiants
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Application web complète permettant la gestion
+                                des étudiants,
+                                authentification sécurisée et base de données
+                                SQL Server.
+                            </p>
+                            <a href="project1Details.html"
+                                class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                                Voir le projet →
+                            </a>
+                        </div>
+                    </div>
+
+                   
+
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="bg-gray-900 text-white py-12">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-2xl font-bold mb-4">Ousseynou Faye</h2>
+                    <p class="text-gray-400 mb-6">
+                        © Développeur Full Stack • Cloud & DevOps Learner (AWS
+                        re/Start)
+                    </p>
+                </div>
+            </footer>
+        </body>
+    </html>
