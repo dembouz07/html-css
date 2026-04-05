@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio</title>
+        <link rel="stylesheet" href="../../output.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </head>
+    <body class="bg-gray-100">
+        <nav
+            class="bg-gray-900 shadow-md border-b-2 text-white h-15 fixed w-full">
+            <div class="flex flex-row">
+                <div
+                    class="container -mt-8 mx-auto flex items-center px-5 justify-between">
+                    <a href="../../index.html">
+                        <img src="../../../public/assets/logo.png" alt="Logo"
+                            class="h-32 inline-block">
+                    </a>
+                    <div class="flex gap-4">
+                        <a href="../../index.html"
+                            class="text-lg font-semibold hover:text-gray-300 mx-4">
+                            <i class="fas fa-house mr-1"></i> Acceuil
+                        </a>
+                        <a href="./projects.html"
+                            class="text-lg font-semibold hover:text-gray-300 mx-4">
+                            <i class="fas fa-briefcase mr-1"></i> Projets
+                        </a>
+                    </div>
+                    <div>
+                        <a href="../contact.html"
+                            class="text-lg font-semibold hover:text-gray-300 mx-4">
+                            <i class="fas fa-envelope mr-1"></i> Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="bg-gray-50 py-20 min-h-screen flex items-center">
+            <div class="container mx-auto px-6">
+
+                <div
+                    class="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-10">
+
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl font-bold text-gray-900">
+                            Ajouter un Projet
+                        </h2>
+                        <div
+                            class="w-20 h-1 bg-blue-600 mx-auto mt-3 rounded"></div>
+                        <p class="text-gray-600 mt-4">
+                            Remplissez les informations pour ajouter un nouveau
+                            projet à votre portfolio.
+                        </p>
+                    </div>
+
+                    <form class="space-y-6">
+
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">
+                                Nom du projet
+                            </label>
+                            <input type="text"
+                                placeholder="Ex: Application de gestion des étudiants"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">
+                                Description
+                            </label>
+                            <textarea rows="4"
+                                placeholder="Décrivez brièvement le projet..."
+                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">
+                                Image du projet
+                            </label>
+                            <input type="file"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-3 file:bg-blue-600 file:text-white file:border-0 file:px-4 file:py-2 file:rounded-lg file:cursor-pointer">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">
+                                Technologies utilisées
+                            </label>
+                            <input type="text"
+                                placeholder="Ex: Laravel, AWS, Docker"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">
+                                Lien du projet
+                            </label>
+                            <input type="url"
+                                placeholder="https://monprojet.com"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">
+                                Lien Github
+                            </label>
+                            <input type="url"
+                                placeholder="https://github.com/moncompte/monprojet.git"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+
+                        <div class="flex justify-between items-center pt-6">
+
+                            <a href="./projects.html"
+                                class="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 transition">
+                                Annuler
+                            </a>
+
+                            <button type="submit"
+                                class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow">
+                                Enregistrer le projet
+                            </button>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="bg-gray-900 text-white py-12">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-2xl font-bold mb-4">Ousseynou Faye</h2>
+                    <p class="text-gray-400 mb-6">
+                        © Développeur Full Stack • Cloud & DevOps Learner (AWS
+                        re/Start)
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
