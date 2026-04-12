@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Ousseynou Faye</title>
+
+    <!-- Tailwind CSS (output compilé) -->
+    <link rel="stylesheet" href="./output.css" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-100">
+
+    <!-- Navbar injectée par navbar.js -->
+    <div id="navbar"></div>
+
+    <!-- Contenu principal — changé par le routeur -->
+    <main id="app"></main>
+
+    <!-- Footer injecté par footer.js -->
+    <div id="app-footer"></div>
+
+    <!-- Point d'entrée JS (ES modules) -->
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
