@@ -3,7 +3,7 @@
  * Page détail d'un projet
  */
 
-import { getProjectBySlug } from "../services/projectService.js";
+import { getProjectBySlug, deleteProject } from "../services/projectService.js";
 
 /**
  * Monte la page détail d'un projet
@@ -65,7 +65,7 @@ export function mountProjectDetail(container, slug, onNavigate) {
                 .join("")}
             </div>
 
-            <div class="flex gap-4">
+            <div class="flex flex-wrap gap-3">
               <a href="${project.demoUrl}"
                 class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center gap-2">
                 <i class="fas fa-eye"></i> Demo
@@ -74,14 +74,78 @@ export function mountProjectDetail(container, slug, onNavigate) {
                 class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition flex items-center gap-2">
                 <i class="fab fa-github"></i> Code
               </a>
+              <button id="edit-btn"
+                class="bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600 transition flex items-center gap-2">
+                <i class="fas fa-pen"></i> Modifier
+              </button>
+              <button id="delete-btn"
+                class="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition flex items-center gap-2">
+                <i class="fas fa-trash"></i> Supprimer
+              </button>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Modale de confirmation suppression -->
+    <div id="delete-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4">
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-trash text-red-500 text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">Supprimer le projet ?</h3>
+          <p class="text-gray-600">
+            Vous êtes sur le point de supprimer
+            <span class="font-semibold text-gray-800">"${project.title}"</span>.
+            Cette action est irréversible.
+          </p>
+        </div>
+        <div class="flex gap-3 justify-center">
+          <button id="modal-cancel"
+            class="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 transition font-medium">
+            Annuler
+          </button>
+          <button id="modal-confirm"
+            class="px-6 py-3 rounded-lg bg-red-500 text-white hover:bg-red-600 transition font-medium flex items-center gap-2">
+            <i class="fas fa-trash"></i> Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
   `;
 
+  const modal = container.querySelector("#delete-modal");
+
+  // Retour aux projets
   container.querySelector("#back-btn").addEventListener("click", () => {
     if (onNavigate) onNavigate("projects");
+  });
+
+  // Modifier → page d'édition
+  container.querySelector("#edit-btn").addEventListener("click", () => {
+    if (onNavigate) onNavigate("edit-project", { id: project.id });
+  });
+
+  // Supprimer → ouvre la modale
+  container.querySelector("#delete-btn").addEventListener("click", () => {
+    modal.classList.remove("hidden");
+  });
+
+  // Annuler dans la modale → ferme la modale
+  container.querySelector("#modal-cancel").addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  // Clic en dehors de la modale → ferme la modale
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.add("hidden");
+  });
+
+  // Confirmer la suppression
+  container.querySelector("#modal-confirm").addEventListener("click", () => {
+    const success = deleteProject(project.id);
+    if (success && onNavigate) onNavigate("projects");
   });
 }

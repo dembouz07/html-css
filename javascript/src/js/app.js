@@ -12,6 +12,7 @@ import { mountHome } from "./pages/home.js";
 import { mountProjects } from "./pages/projects.js";
 import { mountProjectDetail } from "./pages/projectDetail.js";
 import { mountAddProject } from "./pages/addProject.js";
+import { mountEditProject } from "./pages/editProject.js";
 import { mountContact } from "./pages/contact.js";
 
 // ─── État de l'application ───────────────────────────────────────────────────
@@ -33,7 +34,7 @@ function navigate(page, params = {}) {
   state.params = params;
 
   // Mise à jour de la navbar
-  const navPage = ["projects", "add-project", "project-detail"].includes(page)
+  const navPage = ["projects", "add-project", "project-detail", "edit-project"].includes(page)
     ? "projects"
     : page === "contact"
     ? "contact"
@@ -72,6 +73,10 @@ function renderPage() {
       mountAddProject(container, navigate);
       break;
 
+    case "edit-project":
+      mountEditProject(container, state.params.id, navigate);
+      break;
+
     case "contact":
       mountContact(container, navigate);
       break;
@@ -81,7 +86,7 @@ function renderPage() {
         <section class="min-h-screen flex items-center justify-center pt-16">
           <div class="text-center">
             <h2 class="text-4xl font-bold text-gray-800 mb-4">Page introuvable</h2>
-            <button onclick="" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+            <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
               Retour à l'accueil
             </button>
           </div>

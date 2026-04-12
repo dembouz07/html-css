@@ -35,19 +35,14 @@ export function mountProjects(container, onNavigate) {
     </section>
   `;
 
-  // Bouton ajouter
   container.querySelector("#add-project-btn").addEventListener("click", () => {
     if (onNavigate) onNavigate("add-project");
   });
 
-  // Grille des projets
   const grid = container.querySelector("#projects-grid");
   projects.forEach((project, index) => {
-    const card = createProjectCard(project, (slug) => {
-      if (onNavigate) onNavigate("project-detail", { slug });
-    });
+    const card = createProjectCard(project, onNavigate);
 
-    // Dernier projet centré si nombre impair
     if (index === projects.length - 1 && projects.length % 2 !== 0) {
       card.classList.add("md:col-span-2", "md:w-1/2", "md:mx-auto");
     }
