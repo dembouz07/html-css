@@ -118,3 +118,43 @@ export function addProject(projectData) {
   projects.push(newProject);
   return newProject;
 }
+
+/**
+ * Met à jour un projet existant par son id
+ * @param {number} id
+ * @param {Object} projectData - champs à modifier
+ * @returns {Object|null} projet mis à jour ou null si introuvable
+ */
+export function updateProject(id, projectData) {
+  const index = projects.findIndex((p) => p.id === Number(id));
+  if (index === -1) return null;
+ 
+  projects[index] = {
+    ...projects[index],
+    ...projectData,
+    // On conserve toujours l'id et le slug d'origine
+    id: projects[index].id,
+    slug: projects[index].slug,
+    technologies:
+      typeof projectData.technologies === "string"
+        ? projectData.technologies
+            .split(",")
+            .map((t) => t.trim())
+            .filter(Boolean)
+        : projectData.technologies,
+  };
+ 
+  return projects[index];
+}
+
+/**
+ * Supprime un projet par son id
+ * @param {number} id
+ * @returns {boolean} true si supprimé, false si introuvable
+ */
+export function deleteProject(id) {
+  const index = projects.findIndex((p) => p.id === Number(id));
+  if (index === -1) return false;
+  projects.splice(index, 1);
+  return true;
+}
