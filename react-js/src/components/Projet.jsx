@@ -1,61 +1,58 @@
-/**
- * Projet.jsx
- * Affiche le libellé et l'image d'un projet ainsi qu'un bouton Supprimer.
- * Le libellé est une ancre dont le clic affiche le détail du projet.
- */
-
 import { useNavigate } from 'react-router-dom'
 
 export default function Projet({ project, onDelete }) {
     const navigate = useNavigate()
 
     return (
-        <div className="card">
+        <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group">
             {/* Image */}
-            <img
-                src={project.image}
-                alt={project.title}
-                className="project-card-img"
-                onError={e => { e.target.src = `https://placehold.co/600x400/94a3b8/white?text=${encodeURIComponent(project.title)}` }}
-            />
+            <div className="overflow-hidden h-52">
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={e => { e.target.src = `https://placehold.co/400x200/3b82f6/white?text=${encodeURIComponent(project.title)}` }}
+                />
+            </div>
 
-            <div className="project-card-body">
-                {/* Libellé — ancre vers le détail */}
+            <div className="p-6">
+                {/* Titre — ancre cliquable */}
                 <h3
-                    className="project-card-title"
+                    className="font-syne font-bold text-xl text-gray-800 mb-2 cursor-pointer hover:text-blue-600 transition-colors"
                     onClick={() => navigate(`/projets/${project.id}`)}
                     title="Voir le détail"
                 >
                     {project.title}
                 </h3>
 
-                {/* Description courte */}
-                <p className="project-card-desc">{project.shortDescription}</p>
+                <p className="text-gray-500 text-sm mb-4 leading-relaxed">{project.shortDescription}</p>
 
                 {/* Badges technologies */}
-                <div className="project-card-tags">
+                <div className="flex flex-wrap gap-2 mb-5">
                     {(project.technologies || []).slice(0, 3).map(tech => (
-                        <span key={tech} className="badge">{tech}</span>
+                        <span key={tech} className="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full font-semibold">
+              {tech}
+            </span>
                     ))}
                 </div>
 
-                {/* Actions */}
-                <div className="project-card-actions">
+                {/* Boutons */}
+                <div className="flex gap-2 flex-wrap">
                     <button
-                        className="btn btn-primary btn-sm"
                         onClick={() => navigate(`/projets/${project.id}`)}
+                        className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition flex items-center gap-1.5"
                     >
                         <i className="fas fa-eye" /> Voir
                     </button>
                     <button
-                        className="btn btn-warning btn-sm"
                         onClick={() => navigate(`/projets/${project.id}/editer`)}
+                        className="bg-yellow-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-yellow-600 transition flex items-center gap-1.5"
                     >
                         <i className="fas fa-pen" /> Modifier
                     </button>
                     <button
-                        className="btn btn-danger btn-sm"
                         onClick={() => onDelete(project)}
+                        className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-600 transition flex items-center gap-1.5"
                     >
                         <i className="fas fa-trash" /> Supprimer
                     </button>

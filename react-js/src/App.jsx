@@ -9,18 +9,21 @@ import EditerProjet from './components/EditerProjet.jsx'
 import Contact from './pages/Contact.jsx'
 
 export default function App() {
-  return (
-    <>
-      <Navbar />
-      <Routes>
-        <Route path="/"               element={<Home />} />
-        <Route path="/projets"        element={<Dossier />} />
-        <Route path="/projets/:id"    element={<DetaillerProjet />} />
-        <Route path="/projets/ajouter" element={<AjouterProjet />} />
-        <Route path="/projets/:id/editer" element={<EditerProjet />} />
-        <Route path="/contact"        element={<Contact />} />
-      </Routes>
-      <Footer />
-    </>
-  )
+    return (
+        <div className="min-h-screen flex flex-col bg-gray-100">
+            <Navbar />
+            <main className="flex-1">
+                <Routes>
+                    <Route path="/"                   element={<Home />} />
+                    <Route path="/projets"            element={<Dossier />} />
+                    {/* /ajouter AVANT /:id pour éviter le conflit */}
+                    <Route path="/projets/ajouter"    element={<AjouterProjet />} />
+                    <Route path="/projets/:id/editer" element={<EditerProjet />} />
+                    <Route path="/projets/:id"        element={<DetaillerProjet />} />
+                    <Route path="/contact"            element={<Contact />} />
+                </Routes>
+            </main>
+            <Footer />
+        </div>
+    )
 }
