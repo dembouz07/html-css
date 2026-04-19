@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
+import Home from './pages/Home.jsx'
+import Dossier from './components/Dossier.jsx'
+import DetaillerProjet from './components/DetaillerProjet.jsx'
+import AjouterProjet from './components/AjouterProjet.jsx'
+import EditerProjet from './components/EditerProjet.jsx'
+import Contact from './pages/Contact.jsx'
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/"               element={<Home />} />
+        <Route path="/projets"        element={<Dossier />} />
+        <Route path="/projets/:id"    element={<DetaillerProjet />} />
+        <Route path="/projets/ajouter" element={<AjouterProjet />} />
+        <Route path="/projets/:id/editer" element={<EditerProjet />} />
+        <Route path="/contact"        element={<Contact />} />
+      </Routes>
+      <Footer />
+    </>
+  )
 }
-
-export default App;

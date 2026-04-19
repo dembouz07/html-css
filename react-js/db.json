@@ -1,0 +1,54 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Application de gestion des étudiants",
+      "shortDescription": "Application web complète permettant la gestion des étudiants, authentification sécurisée et base de données SQL Server.",
+      "description": "Application web permettant la gestion complète des étudiants avec authentification, CRUD et base de données relationnelle.",
+      "image": "https://placehold.co/600x400/3b82f6/white?text=App+Etudiants",
+      "technologies": ["HTML", "Tailwind", "SQL Server", "JavaScript"],
+      "demoUrl": "#",
+      "githubUrl": "#"
+    },
+    {
+      "id": 2,
+      "title": "Déploiement AWS EC2",
+      "shortDescription": "Configuration et déploiement d'un serveur web Apache sur AWS EC2 avec gestion des accès et sécurité réseau.",
+      "description": "Mise en place d'un serveur web Apache sur AWS EC2 avec configuration réseau, accès SSH sécurisé et déploiement d'application.",
+      "image": "https://placehold.co/600x400/f59e0b/white?text=AWS+EC2",
+      "technologies": ["AWS EC2", "Linux", "Apache", "SSH"],
+      "demoUrl": "#",
+      "githubUrl": "#"
+    },
+    {
+      "id": 3,
+      "title": "Pipeline CI/CD avec GitHub Actions",
+      "shortDescription": "Automatisation du build, test et déploiement continu d'une application web grâce à GitHub Actions.",
+      "description": "Automatisation du build, des tests et du déploiement continu grâce à GitHub Actions pour améliorer la livraison logicielle.",
+      "image": "https://placehold.co/600x400/10b981/white?text=CI/CD",
+      "technologies": ["GitHub Actions", "CI/CD", "Automation", "DevOps"],
+      "demoUrl": "#",
+      "githubUrl": "#"
+    },
+    {
+      "id": 4,
+      "title": "Application Laravel",
+      "shortDescription": "Développement d'une plateforme de gestion de livres avec Laravel, architecture MVC et interface moderne.",
+      "description": "Développement d'une plateforme web basée sur Laravel avec architecture MVC, gestion des utilisateurs et interface moderne.",
+      "image": "https://placehold.co/600x400/ef4444/white?text=Laravel",
+      "technologies": ["Laravel", "PHP", "MySQL", "MVC"],
+      "demoUrl": "#",
+      "githubUrl": "#"
+    },
+    {
+      "id": 5,
+      "title": "Monitoring AWS CloudWatch",
+      "shortDescription": "Mise en place du monitoring des performances EC2 avec CloudWatch et notifications automatiques via SNS.",
+      "description": "Configuration du monitoring AWS CloudWatch avec alertes SNS pour surveiller les performances des instances EC2.",
+      "image": "https://placehold.co/600x400/8b5cf6/white?text=CloudWatch",
+      "technologies": ["CloudWatch", "AWS SNS", "Monitoring", "AWS"],
+      "demoUrl": "#",
+      "githubUrl": "#"
+    }
+  ]
+}
