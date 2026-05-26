@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     triggers {
-        pollSCM('* * * * *')  // Vérifie chaque minute (pour tests)
+        pollSCM('* * * * *')
     }
     
     environment {
@@ -25,8 +25,8 @@ pipeline {
                 echo 'Building Backend Docker image...'
                 script {
                     dir('express-js') {
-                        bat "docker build -t ${BACKEND_IMAGE}:${VERSION} ."
-                        bat "docker tag ${BACKEND_IMAGE}:${VERSION} ${BACKEND_IMAGE}:latest"
+                        sh "docker build -t ${BACKEND_IMAGE}:${VERSION} ."
+                        sh "docker tag ${BACKEND_IMAGE}:${VERSION} ${BACKEND_IMAGE}:latest"
                     }
                 }
             }
@@ -37,8 +37,8 @@ pipeline {
                 echo 'Building Frontend Docker image...'
                 script {
                     dir('react-js') {
-                        bat "docker build -t ${FRONTEND_IMAGE}:${VERSION} ."
-                        bat "docker tag ${FRONTEND_IMAGE}:${VERSION} ${FRONTEND_IMAGE}:latest"
+                        sh "docker build -t ${FRONTEND_IMAGE}:${VERSION} ."
+                        sh "docker tag ${FRONTEND_IMAGE}:${VERSION} ${FRONTEND_IMAGE}:latest"
                     }
                 }
             }
@@ -48,11 +48,11 @@ pipeline {
             steps {
                 echo 'Pushing images to Docker Hub...'
                 script {
-                    bat "docker login -u %DOCKERHUB_CREDENTIALS_USR% -p %DOCKERHUB_CREDENTIALS_PSW%"
-                    bat "docker push ${BACKEND_IMAGE}:${VERSION}"
-                    bat "docker push ${BACKEND_IMAGE}:latest"
-                    bat "docker push ${FRONTEND_IMAGE}:${VERSION}"
-                    bat "docker push ${FRONTEND_IMAGE}:latest"
+                    sh "echo \$DOCKERHUB_CREDENTIALS_PSW | docker login -u \$DOCKERHUB_CREDENTIALS_USR --password-stdin"
+                    sh "docker push ${BACKEND_IMAGE}:${VERSION}"
+                    sh "docker push ${BACKEND_IMAGE}:latest"
+                    sh "docker push ${FRONTEND_IMAGE}:${VERSION}"
+                    sh "docker push ${FRONTEND_IMAGE}:latest"
                 }
             }
         }
@@ -62,15 +62,15 @@ pipeline {
                 echo 'Deploying application...'
                 script {
                     // Stop all running containers first
-                    bat 'docker stop portfolio-mongodb portfolio-backend portfolio-frontend || echo "No containers to stop"'
+                    sh 'docker stop portfolio-mongodb portfolio-backend portfolio-frontend || true'
                     // Remove containers forcefully
-                    bat 'docker rm -f portfolio-mongodb portfolio-backend portfolio-frontend || echo "No containers to remove"'
+                    sh 'docker rm -f portfolio-mongodb portfolio-backend portfolio-frontend || true'
                     // Clean up with docker-compose
-                    bat 'docker-compose -f docker-compose.hub.yml down -v || echo "Docker compose cleanup done"'
+                    sh 'docker-compose -f docker-compose.hub.yml down -v || true'
                     // Pull latest images
-                    bat 'docker-compose -f docker-compose.hub.yml pull'
+                    sh 'docker-compose -f docker-compose.hub.yml pull'
                     // Start containers
-                    bat 'docker-compose -f docker-compose.hub.yml up -d'
+                    sh 'docker-compose -f docker-compose.hub.yml up -d'
                 }
             }
         }
@@ -79,7 +79,7 @@ pipeline {
     post {
         always {
             echo 'Cleaning up...'
-            bat 'docker logout'
+            sh 'docker logout'
         }
         success {
             echo 'Pipeline completed successfully!'
@@ -108,7 +108,7 @@ pipeline {
                     
                     <p><a href="${env.BUILD_URL}">Voir les details du build</a></p>
                 """,
-                to: 'ousinfaye4@gmail.com',
+                to: 'ousinfaye4@gmail.com', 
                 mimeType: 'text/html'
             )
         }
